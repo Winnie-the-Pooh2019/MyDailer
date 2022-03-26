@@ -3,4 +3,7 @@
     <string name="download_link">https://drive.google.com/u/0/uc?id=1-KO-9GA3NzSgIc1dkAsNm8Dqw0fuPxcR&amp;export=download</string>
     <string name="type_text_here">Type text here</string>
     <string name="search">Search</string>
+    <string name="name_title_text">Имя</string>
+    <string name="phone_title_desc">Телефон</string>
+    <string name="desc_title_text">Описание</string>
 </resources>

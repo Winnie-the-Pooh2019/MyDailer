@@ -16,6 +16,12 @@ class DayAdapter(var phoneList: List<Phone>) : Adapter<DayView>() {
         holder.name.text = phoneList[position].name
         holder.phone.text = phoneList[position].phone
         holder.description.text = phoneList[position].type
+        holder.titles.setBackgroundColor(
+            if (position % 2 == 0)
+                holder.name.context.getColor(R.color.title_even)
+            else
+                holder.name.context.getColor(R.color.title_not_even)
+        )
     }
 
     override fun getItemCount(): Int = phoneList.size
