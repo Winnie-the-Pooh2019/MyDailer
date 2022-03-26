@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyDailer</string>
+    <string name="download_link">https://drive.google.com/u/0/uc?id=1-KO-9GA3NzSgIc1dkAsNm8Dqw0fuPxcR&amp;export=download</string>
+    <string name="type_text_here">Type text here</string>
+    <string name="search">Search</string>
+</resources>
