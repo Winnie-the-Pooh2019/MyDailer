@@ -28,7 +28,9 @@
 
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
-    <androidx.recyclerview.widget.RecyclerView
+
+    <fragment
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/recycler_view"/>
+            android:layout_height="match_parent"
+            android:id="@+id/main_fragment" android:name="com.example.mydailer.ContactFragment"/>
 </LinearLayout>
