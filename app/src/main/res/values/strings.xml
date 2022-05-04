@@ -6,4 +6,5 @@
     <string name="name_title_text">Имя</string>
     <string name="phone_title_desc">Телефон</string>
     <string name="desc_title_text">Описание</string>
+    <string name="search_invation">Искать</string>
 </resources>

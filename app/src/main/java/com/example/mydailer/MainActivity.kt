@@ -19,9 +19,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Timber.plant(Timber.DebugTree())
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         CoroutineScope(Dispatchers.Main).launch {
-            val phoneList = Gson().fromJson(downloadJson(), Array<Phone>::class.java)
+            val phoneList: Array<Phone> =
+            try {
+                Gson().fromJson(downloadJson(), Array<Phone>::class.java)
+            } catch (e: Exception) {
+                Timber.e(e)
+                emptyArray()
+            }
 
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
                 layoutManager = LinearLayoutManager(context)
