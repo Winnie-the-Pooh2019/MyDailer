@@ -1,7 +1,9 @@
 package com.example.mydailer
 
 import android.os.Bundle
-import android.widget.Button
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,11 +37,17 @@ class MainActivity : AppCompatActivity() {
                 adapter = DayAdapter(phoneList.toList())
             }
 
-            findViewById<Button>(R.id.button_search).setOnClickListener {
-                val adapter = recyclerView.adapter!! as DayAdapter
-                adapter.phoneList = adapter.original.filter { it.searchPhone() }
-                adapter.notifyDataSetChanged()
-            }
+            findViewById<EditText>(R.id.text_search).addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    val adapter = recyclerView.adapter!! as DayAdapter
+                    adapter.phoneList = adapter.original.filter { it.searchPhone() }
+                    adapter.notifyDataSetChanged()
+                }
+
+                override fun afterTextChanged(p0: Editable?) {}
+            })
         }
     }
 
