@@ -1,5 +1,6 @@
 package com.example.mydailer
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -25,19 +26,20 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             val phoneList: Array<Phone> =
-            try {
-                Gson().fromJson(downloadJson(), Array<Phone>::class.java)
-            } catch (e: Exception) {
-                Timber.e(e)
-                emptyArray()
-            }
+                try {
+                    Gson().fromJson(downloadJson(), Array<Phone>::class.java)
+                } catch (e: Exception) {
+                    Timber.e(e)
+                    emptyArray()
+                }
 
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = DayAdapter(phoneList.toList())
             }
 
-            findViewById<EditText>(R.id.text_search).addTextChangedListener(object : TextWatcher {
+            val search = findViewById<EditText>(R.id.text_search)
+            search.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -46,7 +48,22 @@ class MainActivity : AppCompatActivity() {
                     adapter.notifyDataSetChanged()
                 }
 
-                override fun afterTextChanged(p0: Editable?) {}
+                override fun afterTextChanged(p0: Editable?) {
+                    if (p0 == null) {
+                        Timber.e("no edit text found")
+                        return
+                    }
+
+                    val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+                    with(sharedPreferences.edit()) {
+                        Timber.w(p0.toString())
+                        putString(getString(R.string.preferences_key), p0.toString())
+                        apply()
+                    }
+                }
+            })
+            search.setText(getPreferences(Context.MODE_PRIVATE).let {
+                return@let it.getString(this@MainActivity.getString(R.string.preferences_key), "")!!
             })
         }
     }
