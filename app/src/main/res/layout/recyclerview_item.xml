@@ -1,44 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" android:orientation="horizontal" android:id="@+id/recycler_container"
-              android:layout_marginVertical="10dp">
+              android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/recycler_container"
+              android:layout_marginVertical="0dp">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" android:id="@+id/titles" android:layout_marginEnd="5dp"
-            android:background="#65673AB7">
-        <TextView
-                android:text="@string/name_title_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/name_title" android:textAlignment="center"
-                android:textSize="16sp"/>
-        <TextView
-                android:text="@string/phone_title_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/phone_title" android:textAlignment="center"
-                android:textSize="16sp" android:layout_marginVertical="5dp"/>
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
                 android:text="@string/desc_title_text"
+                android:layout_width="90dp"
+                android:layout_height="match_parent" android:id="@+id/desc_title" android:textAlignment="center"
+                android:textSize="16sp" android:layout_weight="0"
+                android:background="@color/title_even"/>
+        <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/desc_title" android:textAlignment="center"
-                android:textSize="16sp"/>
+                android:layout_height="wrap_content" android:id="@+id/phone"
+                android:textAlignment="center" android:textSize="16sp" android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"/>
     </LinearLayout>
     <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/values">
+            android:layout_height="match_parent">
+        <TextView
+                android:text="@string/name_title_text"
+                android:layout_width="90dp"
+                android:layout_height="match_parent" android:id="@+id/name_title" android:textAlignment="center"
+                android:textSize="16sp" android:layout_weight="0" android:background="@color/title_even"/>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/description" android:textAlignment="viewEnd"
-                android:textSize="16sp"/>
+                android:layout_height="wrap_content" android:id="@+id/description" android:textAlignment="center"
+                android:textSize="16sp" android:layout_marginHorizontal="5dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="@string/phone_title_desc"
+                android:layout_width="90dp"
+                android:layout_height="match_parent" android:id="@+id/phone_title" android:textAlignment="center"
+                android:textSize="16sp" android:layout_weight="0"
+                android:background="@color/title_even"/>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/name" android:textSize="16sp"/>
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/phone" android:layout_marginVertical="5dp"
-                android:textAlignment="center" android:textSize="16sp"/>
+                android:layout_height="wrap_content" android:id="@+id/name" android:textSize="16sp"
+                android:layout_weight="0" android:layout_marginHorizontal="5dp"/>
     </LinearLayout>
 </LinearLayout>
